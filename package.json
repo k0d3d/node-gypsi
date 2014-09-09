@@ -1,29 +1,13 @@
 {
-  "name": "mean",
-  "description": "MEAN.io: A fullstack JavaScript framework powered by MongoDB, ExpressJS, AngularJS, NodeJS.",
-  "version": "0.4.0",
+  "name": "gypsi",
+  "description": "Node-Gypsi is a small open source node.js utility for managing and monitoring Node.js applications and process. Node-Gypsi is based on MEAN.io and Monit ",
+  "version": "0.0.0",
   "private": false,
-  "author": "Linnovate <mean@linnovate.net>",
-  "contributors": [{
-    "name": "Lior Kesos",
-    "mail": "lior@linnovate.net"
-  }, {
-    "name": "Yonatan Ellman",
-    "mail": "yonatan@linnovate.net"
-  }, {
-    "name": "Drew Fyock",
-    "mail": "drew@steelbisondev.com"
-  }, {
-    "name": "Ehud Shahak",
-    "mail": "ehud@linnovate.net"
-  }, {
-    "name": "Amos Haviv",
-    "mail": "mail@amoshaviv.com"
-  }],
+  "author": "Mykel Koded <koded@i-x.it>",
   "mean": "0.4.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/linnovate/mean.git"
+    "url": "https://github.com/k0d3d/node-gypsi.git"
   },
   "engines": {
     "node": "0.10.x",
@@ -78,7 +62,8 @@
     "serve-favicon": "^2.0.0",
     "swig": "^1.3.2",
     "time-grunt": "^0.3.1",
-    "view-helpers": "^0.1.4"
+    "view-helpers": "^0.1.4",
+    "terminal-menu": "~0.3.2"
   },
   "devDependencies": {
     "grunt-karma": "^0.8.2",
@@ -99,5 +84,22 @@
     "requirejs": "^2.1.11",
     "should": "3.3.1",
     "supertest": "0.11.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/linnovate/mean/issues"
+  },
+  "main": "start.js",
+  "keywords": [
+    "monit",
+    "\"process",
+    "management\"",
+    "\"project",
+    "management\"",
+    "monitor",
+    "\"project",
+    "dependency\"",
+    "\"group",
+    "start\""
+  ],
+  "license": "BSD"
 }
