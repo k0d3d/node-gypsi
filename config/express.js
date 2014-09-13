@@ -1,103 +1,109 @@
-'use strict';
-
 /**
  * Module dependencies.
  */
-var mean = require('meanio'),
-  compression = require('compression'),
-  morgan = require('morgan'),
-  consolidate = require('consolidate'),
-  cookieParser = require('cookie-parser'),
-  expressValidator = require('express-validator'),
-  bodyParser = require('body-parser'),
-  methodOverride = require('method-override'),
-  assetmanager = require('assetmanager'),
-  session = require('express-session'),
-  mongoStore = require('connect-mongo')(session),
-  helpers = require('view-helpers'),
-  flash = require('connect-flash'),
-  config = mean.loadConfig();
+ var express = require('express'),
+ mongoStore = require('connect-mongo')(express),
+ flash = require('connect-flash'),
+ helpers = require('view-helpers'),
+ lingua = require('lingua'),
+ config = require('./config');
 
-module.exports = function(app, passport, db) {
-
+module.exports = function(app, passport) {
   app.set('showStackError', true);
 
-  // Prettify HTML
-  app.locals.pretty = true;
-
-  // cache=memory or swig dies in NODE_ENV=production
-  app.locals.cache = 'memory';
-
-  // Should be placed before express.static
-  // To ensure that all assets and data are compressed (utilize bandwidth)
-  app.use(compression({
-    // Levels are specified in a range of 0 to 9, where-as 0 is
-    // no compression and 9 is best compression, but slowest
+  //Should be placed before express.static
+  app.use(express.compress({
+    filter: function(req, res) {
+      return (/json|text|javascript|css/).test(res.getHeader('Content-Type'));
+    },
     level: 9
   }));
 
-  // Only use logger for development environment
-  if (process.env.NODE_ENV === 'development') {
-    app.use(morgan('dev'));
+  //Setting the fav icon and static folder
+  app.use(express.favicon(config.root + '/public/favicon.ico'));
+  app.use(express.static(config.root + '/public'));
+  app.use('/user/:userId/img', express.static(config.root + '/app/users/img'));
+
+  //Don't use logger for test env
+  if (process.env.NODE_ENV !== 'test') {
+    app.use(express.logger('dev'));
   }
 
-  // assign the template engine to .html files
-  app.engine('html', consolidate[config.templateEngine]);
+  //Set views path, template engine and default layout
+  app.set('views', config.root + '/app/views');
+  app.set('view engine', 'jade');
 
-  // set .html as the default extension
-  app.set('view engine', 'html');
-
-  // The cookieParser should be above session
-  app.use(cookieParser());
-
-  // Request body parsing middleware should be above methodOverride
-  app.use(expressValidator());
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({
-    extended: true
+  app.use(lingua(app, {
+    defaultLocale: 'en',
+    path: __dirname + '/i18n'
   }));
-  app.use(methodOverride());
 
-  // Import the assets file and add to locals
-  var assets = assetmanager.process({
-    assets: require('./assets.json'),
-    debug: process.env.NODE_ENV !== 'production',
-    webroot: /public\/|packages\//g
-  });
+  //Enable jsonp
+  app.enable("jsonp callback");
 
-  // Add assets to local variables
-  app.use(function(req, res, next) {
-    res.locals.assets = assets;
+  app.configure(function() {
+      //cookieParser should be above session
+      app.use(express.cookieParser());
 
-    mean.aggregated('js', 'header', function(data) {
-      res.locals.headerJs = data;
-      next();
+      //bodyParser should be above methodOverride
+      app.use(express.bodyParser());
+      
+      app.use(express.methodOverride());
+
+      //express/mongo session storage
+      app.use(express.session({
+        secret: 'hell12sex12fury',
+        cookie: { maxAge: 24 * 60 * 60 * 1000 },
+        store: new mongoStore({
+          url: config.db,
+          collection: 'sessions',
+
+        })
+      }));
+
+      //connect flash for flash messages
+      app.use(flash());
+
+      //dynamic helpers
+      app.use(helpers(config.app.name));
+
+      //use passport session
+      app.use(passport.initialize());
+      app.use(passport.session());
+
+      //CSRF protection for form-submission
+      // app.use(express.csrf());
+      // app.use(function(req, res, next) {
+      //   res.cookie('XSRF-TOKEN', req.csrfToken());
+      //   res.locals.csrftoken = req.csrfToken();
+      //   next();
+      // });
+
+      //routes should be at the last
+      app.use(app.router);
+
+      //Assume "not found" in the error msgs is a 404. this is somewhat silly, but valid, you can do whatever you like, set properties, use instanceof etc.
+      app.use(function(err, req, res, next) {
+          //Treat as 404
+          if (~err.message.indexOf('not found')) return next();
+
+          //Log it
+          console.error(err.stack);
+
+          //Error page
+          res.status(500).render('500', {
+            error: err.stack
+          });
+        });
+
+      //Assume 404 since no middleware responded
+      app.use(function(req, res, next) {
+        res.status(404).render('404', {
+          url: req.originalUrl,
+          error: 'Not found',
+          title: '..Oopps'
+        });
+      });
+
     });
-  });
-
-  // Express/Mongo session storage
-  app.use(session({
-    secret: config.sessionSecret,
-    store: new mongoStore({
-      db: db.connection.db,
-      collection: config.sessionCollection
-    }),
-    cookie: config.sessionCookie,
-    name: config.sessionName,
-    resave: true,
-    saveUninitialized: true
-  }));
-
-  // Dynamic helpers
-  app.use(helpers(config.app.name));
-
-  // Use passport session
-  app.use(passport.initialize());
-  app.use(passport.session());
-
-  //mean middleware from modules before routes
-  app.use(mean.chainware.before);
-
-  // Connect flash for flash messages
-  app.use(flash());
 };

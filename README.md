@@ -1,9 +1,14 @@
 # Node Gypsi
 
+This package is still being developed. Dont use
+
 [![Build Status](https://travis-ci.org/linnovate/mean.png?branch=master)](https://travis-ci.org/linnovate/mean)
 [![Dependencies Status](https://david-dm.org/linnovate/mean.png)](https://david-dm.org/linnovate/mean)
 
-Node-Gypsi is a small open source node.js utility for managing and monitoring Node.js applications and process. Node-Gypsi is based on MEAN.io and Monit
+Node-Gypsi is a small open source node.js utility for managing and monitoring Node.js applications and process. It can start up
+deamons and services your application depends on. It uses Monit to manage these services.
+
+Node-Gypsi has a very intuitive CLI wizard that helps you set up your applications dependencies.
 
 ## Prerequisites
 * Monit - Download and Install [Monit](https://bitbucket.org/tildeslash/monit/) - Make sure `monit` is installed.
@@ -32,27 +37,9 @@ $ npm install -g grunt-cli
 * Twitter Bootstrap - Defined as bower module in the [bower.json](bower.json) file.
 * UI Bootstrap - Defined as bower module in the [bower.json](bower.json) file.
 
-## Heroku Quick Deployment
-Before you start make sure you have the [Heroku toolbelt](https://toolbelt.heroku.com/)
-installed and an accessible MongoDB instance - you can try [MongoHQ](http://www.mongohq.com/)
-which has an easy setup).
-
-Add the db string to the production env in server/config/env/production.js.
-
-```
-git init
-git add .
-git commit -m "initial version"
-heroku apps:create
-heroku config:add NODE_ENV=production
-heroku config:add BUILDPACK_URL=https://github.com/mbuchetics/heroku-buildpack-nodejs-grunt.git
-git push heroku master
-heroku config:set NODE_ENV=production
-```
 
 ## More Information
-  * Visit us at [Linnovate.net](http://www.linnovate.net/).
-  * Visit our [Ninja's Zone](http://www.meanleanstartupmachine.com/) for extended support.
+* [@pinkybrayne](http://www.twitter.net/pinkybrayne)
 
 ## License
 [The MIT License](http://opensource.org/licenses/MIT)
