@@ -1,7 +1,0 @@
-{
-  "appDeets": {
-    "project_name": "gypsi",
-    "project_version": "0.0.1",
-    "project_entry_point": "server.js"
-  }
-}
