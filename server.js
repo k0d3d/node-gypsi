@@ -18,6 +18,7 @@ var express = require('express'),
     terminal = require('./lib/terminal-controller'),
     crashProtector = require('common-errors').middleware.crashProtector,
     fs = require('fs'),
+    path = require('path'),
     Q = require('q');
 
 Q.longStackSupport = true;
@@ -42,12 +43,16 @@ function afterResourceFilesLoad() {
     app.use(errors.init());
 
     //run the terminal controller
-    fs.exists('./.gypsirc', function (b) {
-      if (b) {
-        terminal().manageProject();
-      } else {
+    fs.open(path.join(process.cwd() , '.gypsirc'), 'r', function (err, b) {
+      if (err.code === 'ENOENT') {
         terminal().createNewProject();
       }
+
+      if (b) {
+        terminal().manageProject();
+      }
+      // process.stderr.write('Unknown Error Occurred');
+      // process.exit(1);
     });
 
     // assume "not found" in the error msgs
