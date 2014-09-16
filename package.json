@@ -25,6 +25,7 @@
     "connect-mongo": "latest",
     "cookie-parser": "latest",
     "cookie-session": "latest",
+    "dotject": "^0.6.4",
     "errors": "latest",
     "express": "latest",
     "express-session": "latest",
