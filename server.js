@@ -44,13 +44,14 @@ function afterResourceFilesLoad() {
 
     //run the terminal controller
     fs.open(path.join(process.cwd() , '.gypsirc'), 'r', function (err, b) {
-      if (err.code === 'ENOENT') {
-        terminal.term().createNewProject();
+      if (b) {
+        return terminal.manageProject();
       }
 
-      if (b) {
-        terminal.term().manageProject();
+      if (err.code === 'ENOENT') {
+        terminal.createNewProject();
       }
+
       // process.stderr.write('Unknown Error Occurred');
       // process.exit(1);
     });
