@@ -1,5 +1,5 @@
 describe('Terminal Prompts and Methods', function() {
-  var G = require('../lib/terminal-controller').gypsi,
+  var G = require('../lib/terminal-controller'),
       _ = require('lodash');
 
   var testCfgO = {
@@ -18,7 +18,7 @@ describe('Terminal Prompts and Methods', function() {
     });
   });
 
-  it('should show the top menu with conditional choices', function (done) {
+  xit('should show the top menu with conditional choices', function (done) {
     console.log('as a new project');
     var g = new G();
     // g.showTopMenu();
@@ -30,4 +30,11 @@ describe('Terminal Prompts and Methods', function() {
       // done();
     });
   },20000);
+
+  it('should try adding a service co app', function (done) {
+    var g = new G();
+    g.addCoApp();
+    // expect(_.size(g._currentConfiguration.coApps.node)).toBeGreaterThan(0);
+    // done();
+  }, 20000);
 });

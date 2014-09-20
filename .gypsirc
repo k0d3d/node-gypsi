@@ -5,7 +5,18 @@
     "project_entry_point": "server.js"
   },
   "coApps": {
-    "node": {},
-    "services": {}
+    "node": {
+      "1": {
+        "project_name": "IXIT-Media-Server",
+        "project_version": "0.1.0",
+        "project_entry_point": "server.js"
+      }
+    },
+    "services": {
+      "1": {
+        "service_name": "httpd",
+        "service_desc": "Apache HTTP Server"
+      }
+    }
   }
 }

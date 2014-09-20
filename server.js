@@ -15,7 +15,7 @@ console.log('gypsi application deamon manager: ' + pjson.version);
 var express = require('express'),
     app = express(),
     errors = require('./lib/errors'),
-    terminal = require('./lib/terminal-controller'),
+    Menu = require('./lib/terminal-controller'),
     crashProtector = require('common-errors').middleware.crashProtector,
     fs = require('fs'),
     path = require('path'),
@@ -44,6 +44,8 @@ function afterResourceFilesLoad() {
 
     //run the terminal controller
     fs.open(path.join(process.cwd() , '.gypsirc'), 'r', function (err, b) {
+      var terminal = new Menu();
+
       if (b) {
         return terminal.manageProject();
       }
