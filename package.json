@@ -51,7 +51,7 @@
     "grunt-contrib-imagemin": "latest"
   },
   "bugs": {
-    "url": "https://github.com/linnovate/mean/issues"
+    "url": "https://github.com/k0d3d/node-gypsi/issues"
   },
   "main": "server.js",
   "keywords": [
