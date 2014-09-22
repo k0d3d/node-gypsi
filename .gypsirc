@@ -2,21 +2,16 @@
   "main": {
     "project_name": "gypsi",
     "project_version": "0.0.1",
-    "project_entry_point": "server.js"
+    "project_entry_point": "/home/kingkoded/Projects/node-gypsi/server.js"
   },
   "coApps": {
     "node": {
       "1": {
         "project_name": "IXIT-Media-Server",
         "project_version": "0.1.0",
-        "project_entry_point": "server.js"
+        "project_entry_point": "/home/kingkoded/Projects/dk33p/server.js"
       }
     },
-    "services": {
-      "1": {
-        "service_name": "httpd",
-        "service_desc": "Apache HTTP Server"
-      }
-    }
+    "services": {}
   }
 }
