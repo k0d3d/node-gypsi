@@ -1,6 +1,6 @@
 {
   "name": "gypsi",
-  "description": "Node-Gypsi is a small open source node.js utility for managing and monitoring Node.js applications and process. Node-Gypsi is based on MEAN.io and Monit ",
+  "description": "Node-Gypsi is a small open source node.js utility for managing and monitoring a Node.js application and the services /co-applications it requires to run",
   "version": "1.0.2",
   "private": false,
   "author": "Mykel Koded <koded@i-x.it>",
