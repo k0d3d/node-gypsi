@@ -7,6 +7,9 @@ deamons and services your application depends on. It uses Monit to manage these 
 
 Node-Gypsi has a very intuitive CLI wizard that helps you set up your applications dependencies.
 
+## How to use
+* [Mini tutorial](http://kodedx.tumblr.com/post/98159247059/how-to-use-node-gypsi)
+
 ## Prerequisites
 * Monit - Download and Install [Monit](https://bitbucket.org/tildeslash/monit/) - Make sure `monit` is installed.
 * Node.js - Download and Install [Node.js](http://www.nodejs.org/download/). You can also follow [this gist](https://gist.github.com/isaacs/579814) for a quick and easy way to install Node.js and npm
@@ -20,6 +23,7 @@ Node-Gypsi has a very intuitive CLI wizard that helps you set up your applicatio
 
 ## More Information
 * [@pinkybrayne](http://www.twitter.net/pinkybrayne)
+
 
 ## License
 [The MIT License](http://opensource.org/licenses/MIT)
