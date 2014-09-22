@@ -57,30 +57,6 @@ function afterResourceFilesLoad() {
       // process.stderr.write('Unknown Error Occurred');
       // process.exit(1);
     });
-
-    // assume "not found" in the error msgs
-    // is a 404. this is somewhat silly, but
-    // valid, you can do whatever you like, set
-    // properties, use instanceof etc.
-    app.use(function(err, req, res, next){
-      // treat as 404
-      if  ( err.message &&
-          (~err.message.indexOf('not found')
-          )) {
-        return next();
-      }
-
-      // log it
-      // send emails if you want
-      console.log('Error Stack....');
-      console.error(err.stack);
-
-      // error page
-
-    });
-
-
-
 }
 
 afterResourceFilesLoad();
