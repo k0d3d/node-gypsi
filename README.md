@@ -10,6 +10,7 @@ Node-Gypsi has a very intuitive CLI wizard that helps you set up your applicatio
 ## Installation
 <pre>
 [sudo] npm install gypsi -g
+</pre>
 
 ## How to use
 * [Mini tutorial](http://kodedx.tumblr.com/post/98159247059/how-to-use-node-gypsi)
