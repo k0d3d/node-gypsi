@@ -10,7 +10,6 @@ Node-Gypsi has a very intuitive CLI wizard that helps you set up your applicatio
 ## Prerequisites
 * Monit - Download and Install [Monit](https://bitbucket.org/tildeslash/monit/) - Make sure `monit` is installed.
 * Node.js - Download and Install [Node.js](http://www.nodejs.org/download/). You can also follow [this gist](https://gist.github.com/isaacs/579814) for a quick and easy way to install Node.js and npm
-* MongoDB - Download and Install [MongoDB](http://docs.mongodb.org/manual/installation/) - Make sure `mongod` is running on the default port (27017).
 
 ## More Information
 * [@pinkybrayne](http://www.twitter.net/pinkybrayne)
