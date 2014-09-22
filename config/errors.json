@@ -1,0 +1,32 @@
+[
+
+  {
+    "name": "FileNotFoundError",
+    "defaultMessage": "The requested file could not be found",
+    "defaultExplanation": "The file could not be found",
+    "defaultResponse": "Verify the file exists and retry the operation",
+    "code": 601 
+  },
+  {
+    "name": "FolderNotFoundError",
+    "defaultMessage": "The requested folder could not be found",
+    "defaultExplanation": "The folder could not be found",
+    "defaultResponse": "Verify the folder exists and retry the operation",
+    "code": 602
+  },
+  {
+    "name": "FolderRemoveError",
+    "defaultMessage": "The requested folder could not be deleted",
+    "defaultExplanation": "The folder could not be found",
+    "defaultResponse": "Verify the folder exists and retry the operation",
+    "code": 603
+  },
+  {
+    "name": "FolderHasError",
+    "defaultMessage": "The requested folder could not be deleted",
+    "defaultExplanation": "The folder contains files or folders",
+    "defaultResponse": "Please delete all files or folders within",
+    "code": 604
+  }
+
+]

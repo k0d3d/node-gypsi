@@ -1,0 +1,13 @@
+{
+  "main": {},
+  "coApps": {
+    "node": {
+      "1": {
+        "project_name": "Test Project",
+        "project_version": "0.0.1",
+        "project_entry_point": "server.js"
+      }
+    },
+    "services": {}
+  }
+}
