@@ -8,9 +8,7 @@
     "type": "git",
     "url": "https://github.com/k0d3d/node-gypsi.git"
   },
-  "bin" : {
-    "gypsi" : "./start-gypsi.js"
-  },
+  "bin" : "./start-gypsi.js",
   "engines": {
     "node": "0.10.x",
     "npm": "1.4.x"
