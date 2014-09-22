@@ -5,7 +5,7 @@ This package is still being developed. use carefully..
 Node-Gypsi is a small open source node.js utility for managing and monitoring Node.js applications and process. It can start up
 deamons and services your application depends on. It uses Monit to manage these services.
 
-Node-Gypsi has a very intuitive CLI wizard that helps you set up your applications dependencies.
+Node-Gypsi has a very intuitive CLI wizard that helps you set up your applications dependencies. The current version supports "systemd" as I built this on Fedora 20. I plan to support Upstart and maybe Initd.
 
 ## How to use
 * [Mini tutorial](http://kodedx.tumblr.com/post/98159247059/how-to-use-node-gypsi)
@@ -20,6 +20,7 @@ Node-Gypsi has a very intuitive CLI wizard that helps you set up your applicatio
 * Add Execs; users can add commands as coApps eg. redis-server
 * MONIT Integration.
 * Communicate and Send Mssgs to running processes.
+* Add support for Upstart.
 
 ## More Information
 * [@pinkybrayne](http://www.twitter.net/pinkybrayne)
