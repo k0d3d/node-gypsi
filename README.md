@@ -7,6 +7,11 @@ deamons and services your application depends on. It uses Monit to manage these 
 
 Node-Gypsi has a very intuitive CLI wizard that helps you set up your applications dependencies. The current version supports "systemd" as I built this on Fedora 20. I plan to support Upstart and maybe Initd.
 
+## Installation
+<pre>
+[sudo] npm install gypsi -g
+</pre>
+
 ## How to use
 * [Mini tutorial](http://kodedx.tumblr.com/post/98159247059/how-to-use-node-gypsi)
 
