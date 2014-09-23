@@ -24,7 +24,7 @@ var express = require('express'),
 Q.longStackSupport = true;
 
 //color  on console output
-require('colors');
+// require('colors');
 // set version
 app.set('version', pjson.version);
 
@@ -32,11 +32,9 @@ app.set('version', pjson.version);
 
 function afterResourceFilesLoad() {
 
-    console.log('configuring application, please wait...');
-
     app.set('showStackError', true);
 
-    console.log('Enabling crash protector...');
+    // console.log('Enabling crash protector...');
     app.use(crashProtector());
 
     console.log('Enabling error handling...');
@@ -69,6 +67,4 @@ app.use(function(err, req, res){
   console.error(err.stack);
 
   // make this a nicer error later
-  res.send(500, 'Ewww! Something got broken on IXIT. Getting some tape and glue');
-
 });
