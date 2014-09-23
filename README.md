@@ -21,6 +21,7 @@ Node-Gypsi has a very intuitive CLI wizard that helps you set up your applicatio
 * MONIT Integration.
 * Communicate and Send Mssgs to running processes.
 * Add support for Upstart.
+* Tests and Tasks
 
 ## More Information
 * [@pinkybrayne](http://www.twitter.net/pinkybrayne)
