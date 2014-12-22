@@ -27,6 +27,8 @@ Node-Gypsi has a very intuitive CLI wizard that helps you set up your applicatio
 * Communicate and Send Mssgs to running processes.
 * Add support for Upstart.
 * Tests and Tasks
+* Add node-gypsi version to config file, would help determine how to update
+* Use Nodemon as an option to allow restarts on file change
 
 ## More Information
 * [@pinkybrayne](http://www.twitter.net/pinkybrayne)
